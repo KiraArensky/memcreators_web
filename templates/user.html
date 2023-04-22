@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+    <td><img src="{{user.picture}}"></td>
+    User: {{user.name}}!
+    About: {{user.about}}
+</div>
+<hr>
+{% for post in news%}
+<div class="col-md6 border rounded">
+    <h2>{{post.title}}</h2>
+    <div>
+        <td><img src="{{user.picture}}"></td>
+        {{user.name}}
+    </div>
+    <div>
+        {{post.content}}
+        {{post.created_date}}
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

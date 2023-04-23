@@ -2,22 +2,32 @@
 
 {% block content %}
 <div>
-    <td><img src="{{user.picture}}"></td>
-    User: {{user.name}}!
-    About: {{user.about}}
+    <div class="row">
+        <div class="col-sm">
+            <td><img class="rounded-circle" src="{{user.picture}}"></td>
+        </div>
+        <div class="col-sm">
+            <p>{{user.name}}</p>
+            <p>О себе: {{user.about}}</p>
+        </div>
+    </div>
 </div>
 <hr>
+{% if news != None %}
 {% for post in news%}
-<div class="col-md6 border rounded">
-    <h2>{{post.title}}</h2>
-    <div>
-        <td><img src="{{user.picture}}"></td>
-        {{user.name}}
-    </div>
-    <div>
+<div class="col-md6 border rounded border border-dark">
+    <h2 align="center">{{post.title}}</h2>
+    <td align="center"><img src="{{post.image}}"></td>
+    <div align="center" class="p-3 text-break">
         {{post.content}}
-        {{post.created_date}}
+    </div>
+    <div align="right" class="p-2 text-break">
+        Дата написания - {{post.created_date}}
     </div>
 </div>
+<p></p>
 {% endfor %}
+{% else %}
+<div><h1>Может быть уже сделаешь пост?</h1></div>
+{% endif %}
 {% endblock %}

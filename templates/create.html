@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Новый пост</h1>
+<form action="" method="post" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.name.label }}<br>
+        {{ form.name(class="form-control") }}<br>
+        {% for error in form.name.errors %}
+    <p class="alert alert-danger" role="alert">
+        {{ error }}
+    </p>
+    {% endfor %}
+    </p>
+    <div class="form-group">
+        <label for="picture">Мем</label>
+        <input type="file" class="form-control-file" id="picture" name="pic_mem" accept="image/*" required>
+    </div>
+    <p>
+        {{ form.about.label }}<br>
+        {{ form.about(class="form-control") }}<br>
+        {% for error in form.about.errors %}
+    <p class="alert alert-danger" role="alert">
+        {{ error }}
+    </p>
+    {% endfor %}
+    </p>
+    <p>{{ form.private() }} {{ form.private.label }}</p>
+    <p>{{ form.submit(type="submit", class="btn btn-outline-success") }}</p>
+    <div>{{ message }}</div>
+</form>
+{% endblock %}

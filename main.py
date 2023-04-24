@@ -78,7 +78,7 @@ def user(login):
         return redirect('/login')
     news = db_sess.query(News).filter(News.user_id == session['id'])
     return render_template('user.html',
-                           user=user, news=news, days_mem=mem())
+                           user=user, news=news[::-1], days_mem=mem())
 
 
 @app.route('/logout')
@@ -93,7 +93,7 @@ def feed():
     global days_mem
     db_sess = db_session.create_session()
     news = db_sess.query(News).filter(News.is_private != True)
-    return render_template("feed.html", news=news, days_mem=mem())
+    return render_template("feed.html", news=news[::-1], days_mem=mem())
 
 
 @app.route('/create', methods=['POST', 'GET'])

@@ -1,5 +1,7 @@
 SQLAlchemy~=2.0.9
 Werkzeug~=2.2.3
-Pillow~=9.5.0
-WTForms~=3.0.1
-Flask~=2.2.3
+pillow
+flask_wtf
+flask
+flask-login
+sqlalchemy_serializer
